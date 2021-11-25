@@ -10,7 +10,7 @@ const genresInfo = async () => {
   const infoGenres = await apiGenresInfo.data.results.map((e) => {
     return { name: e.name };
   });
-  //let dbGenres = [];
+
   const consultDb = await Genres.findAll();
 
   if (consultDb.length === 0) {

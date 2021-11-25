@@ -1,6 +1,6 @@
 const { Router } = require("express");
 require("dotenv").config();
-const { genresInfo } = require("./functionsGenres");
+const { genresInfo } = require("./episodes");
 const router = Router();
 
 router.get("/genres", async (req, res, next) => {

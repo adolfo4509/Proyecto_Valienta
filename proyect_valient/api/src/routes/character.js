@@ -3,11 +3,11 @@ const { Router } = require("express");
 const { Videogame, Genres, Platforms } = require("../db.js");
 require("dotenv").config();
 const { API_KEY } = process.env;
-const { getAllInfo } = require("./functions.js");
+const { getAllInfo, apiInfo } = require("./functions.js");
 const { v4: uuidv4 } = require("uuid");
 const router = Router();
 
-router.get("/videogames", async (req, res, next) => {
+router.get("/character", async (req, res, next) => {
   try {
     const gameAll = await getAllInfo();
     res.status(200).json(gameAll);
@@ -16,35 +16,27 @@ router.get("/videogames", async (req, res, next) => {
   }
 });
 
-/*
- GET /videogames?name="...":
-Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-Si no existe ningún videojuego mostrar un mensaje adecuado
-*/
-router.get("/videogame/:name", async (req, res, next) => {
+router.get("/character/:name", async (req, res, next) => {
   const { name } = req.params;
   try {
     let infoApiUrl = await axios.get(
-      ` https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`
+      ` https://rickandmortyapi.com/api/character/?name=${name}`
     );
-    const videogameId = await infoApiUrl.data.results.map((e) => e.id);
+    const characterId = await infoApiUrl.data.results.map((e) => e.id);
 
-    let nameVideogame = [];
-    for (let i = 0; i < videogameId.length; i++) {
+    let characterName = [];
+    for (let i = 0; i < characterId.length; i++) {
       let temp = await axios.get(
-        ` https://api.rawg.io/api/games/${videogameId[i]}?key=${API_KEY}`
+        ` https://rickandmortyapi.com/api/character/${characterId[i]}}`
       );
-      nameVideogame.push({
+      characterName.push({
         id: temp.data.id,
         name: temp.data.name,
-        image: temp.data.background_image,
-        genres: temp.data.genres.map((e) => e.name + ", "),
-        platforms: temp.data.platforms.map((e) => e.platform.name + ", "),
-        rating: temp.data.rating,
-        released: temp.data.released,
-        description: temp.data.description
-          .replace(/<[^>]*>?/g, "")
-          .replace(/(\r\n|\n|\r)/gm, ""),
+        image: temp.data.image,
+        status: temp.data.status,
+        species: temp.data.species,
+        type: temp.data.type,
+        location: temp.data.location,
       });
     }
 
