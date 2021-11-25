@@ -1,10 +1,11 @@
+import { Route, BrowserRouter } from "react-router-dom";
+import Home from "./components/Home";
+
 function App() {
   return (
-    <div>
-      <header>
-        <h1>Rick and Morty</h1>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Route path="/" exact component={Home} />
+    </BrowserRouter>
   );
 }
 
