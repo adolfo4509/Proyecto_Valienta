@@ -8,7 +8,21 @@ export const getCharacters = () => {
   return async (dispatch) => {
     try {
       var json = await axios.get(CHARACTERS_URL);
-      console.log("desde las acciones", json);
+
+      return dispatch({
+        type: GET_CHARACTERS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getEpisodes = () => {
+  return async (dispatch) => {
+    try {
+      var json = await axios.get(CHARACTERS_URL);
+
       return dispatch({
         type: GET_CHARACTERS,
         payload: json.data,

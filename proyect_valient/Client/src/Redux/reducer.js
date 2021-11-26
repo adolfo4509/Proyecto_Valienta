@@ -1,7 +1,8 @@
-const GET_CHARACTERS = require("./actions");
+const { GET_CHARACTERS } = require("./actions");
 
 const inicialState = {
   charactersLoad: [],
+  copiaCharactersLoad: [],
 };
 
 function rootReducer(state = inicialState, action) {
