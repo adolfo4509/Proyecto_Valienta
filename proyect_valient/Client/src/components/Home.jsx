@@ -1,41 +1,87 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../styles/home.css";
 import Card from "./Card";
 import { getCharacters } from "../Redux/actions";
-import Paginado from "./Paginado";
+import "../styles/paginado.css";
+import "../styles/home.css";
 
 const Home = () => {
   var characterAll = useSelector((state) => state.charactersLoad);
   const dispatch = useDispatch();
-  const [currentPage, setCurrentpage] = useState(1);
-  const [characterForPage] = useState(12);
-  const indexOfLastCharacters = currentPage * characterForPage;
-  const indexOfFirtsCharacters = indexOfLastCharacters - characterForPage;
-  const currentCharacters = characterAll.slice(
-    indexOfFirtsCharacters,
-    indexOfLastCharacters
-  );
+
   /**Paginado */
-  const paginado = (pageNum) => {
-    setCurrentpage(pageNum);
+  var countP = 8;
+  var totalCurrent = Math.ceil(characterAll.length / countP);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [actualCurrent, setactualCurrent] = useState(1);
+
+  const nextPage = () => {
+    if (totalCurrent !== actualCurrent) {
+      setactualCurrent(actualCurrent + 1);
+      setCurrentPage(currentPage + countP);
+    }
   };
+
+  const prevPage = () => {
+    if (actualCurrent > 1) {
+      setactualCurrent(actualCurrent - 1);
+      setCurrentPage(currentPage - countP);
+    }
+  };
+
+  const show = () => {
+    if (actualCurrent === 1) {
+      return (
+        <div className="pagination">
+          <p className="pagination-item active">{actualCurrent}</p>
+          <p>TO</p>
+          <p className="pagination-item ">{totalCurrent}</p>
+          <p className="pagination-item " onClick={nextPage}>
+            next
+          </p>
+        </div>
+      );
+    } else if (actualCurrent >= totalCurrent) {
+      return (
+        <div className="pagination">
+          <p className="pagination-item " onClick={prevPage}>
+            prev
+          </p>
+          <p className="pagination-item active">{actualCurrent}</p>
+          <p>TO</p>
+          <p className="pagination-item ">{totalCurrent}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className="pagination">
+          <p className="pagination-item " onClick={prevPage}>
+            prev
+          </p>
+          <p className="pagination-item active">{actualCurrent}</p>
+          <p className="to">TO</p>
+          <p className="pagination-item ">{totalCurrent}</p>
+          <p className="pagination-item " onClick={nextPage}>
+            next
+          </p>
+        </div>
+      );
+    }
+  };
+
   useEffect(() => {
     dispatch(getCharacters()); //se hace un dispatch con la accion como parametro
   }, [dispatch]);
   return (
     <div className="home">
-      <h1 className="titulo">Rick and Morty</h1>
-
-      <Paginado
-        characterForPage={characterForPage}
-        characterAll={characterAll}
-        paginado={paginado}
-      />
+      <div className="titulo">
+        <h1>Rick and Morty</h1>
+      </div>
+      {show()}
       <div className="cards">
-        {currentCharacters &&
-          currentCharacters.map((ch) => {
-            return (
+        {characterAll &&
+          characterAll
+            .map((ch) => (
               <Card
                 id={ch.id}
                 name={ch.name}
@@ -45,8 +91,8 @@ const Home = () => {
                 status={ch.status}
                 type={ch.type}
               />
-            );
-          })}
+            ))
+            .slice(currentPage, currentPage + countP)}
       </div>
     </div>
   );
