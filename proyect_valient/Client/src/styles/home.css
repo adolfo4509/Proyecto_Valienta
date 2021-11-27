@@ -4,6 +4,7 @@ body {
   background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 @media (min-width: 768px) {
   body {
@@ -19,7 +20,7 @@ body {
   font-weight: bold;
 }
 h1 {
-  color: #000;
+  color: rgba(198, 236, 28, 0.959);
   font-size: 20px;
   font-weight: bold;
   display: inline;
@@ -38,7 +39,10 @@ h4 {
 img {
   width: 100%;
   height: auto;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25);
+  border: none;
 }
+
 img:hover {
   transform: scale(1.1, 1.1);
   opacity: 1;
@@ -49,8 +53,7 @@ img:hover {
 }
 .titulo {
   margin-top: 3rem;
-  border: 1px solid rgb(235, 230, 230);
-  background-color: beige;
+  background-color: rgba(0, 0, 0, 0.55);
   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
   opacity: 0.8;

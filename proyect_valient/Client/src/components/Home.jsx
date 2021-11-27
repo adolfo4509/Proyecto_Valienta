@@ -90,6 +90,7 @@ const Home = () => {
                 species={ch.species}
                 status={ch.status}
                 type={ch.type}
+                key={ch.id}
               />
             ))
             .slice(currentPage, currentPage + countP)}

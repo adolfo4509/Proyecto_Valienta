@@ -1,8 +1,9 @@
-const { GET_CHARACTERS } = require("./actions");
+const { GET_CHARACTERS, GET_CHARACTERS_DETAILS } = require("./actions");
 
 const inicialState = {
   charactersLoad: [],
   copiaCharactersLoad: [],
+  characterDetail: [],
 };
 
 function rootReducer(state = inicialState, action) {
@@ -94,11 +95,11 @@ function rootReducer(state = inicialState, action) {
     //     ...state,
     //     platforms: action.payload,
     //   };
-    // case GET_VIDEOGAME_DETAIL:
-    //   return {
-    //     ...state,
-    //     videogameDetail: action.payload,
-    //   };
+    case GET_CHARACTERS_DETAILS:
+      return {
+        ...state,
+        characterDetail: action.payload,
+      };
     // case FILTER_CREATE:
     //   const allvideogame = state.videogameLoad;
     //   const createdFilter =

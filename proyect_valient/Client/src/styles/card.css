@@ -1,5 +1,5 @@
 .fondoCard {
-  background-color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   padding: 10px;
   opacity: 0.9;
@@ -11,4 +11,51 @@
   object-fit: cover;
   transition: 0.7s;
   border-radius: 10px;
+}
+li {
+  list-style: none;
+  color: rgba(183, 221, 14, 0.692);
+  font-size: 15px;
+  font-weight: bold;
+}
+.cards_details {
+  top: 0.3rem;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .cards_details {
+    width: 300px;
+  }
+}
+.cards_details_ {
+  border: 1px solid black;
+  -webkit-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+}
+p {
+  font-size: 1rem;
+  color: rgba(183, 221, 14, 0.692);
+}
+span {
+  color: rgba(183, 221, 14, 0.692);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.description1 {
+  font-size: 0.8rem;
+  color: rgba(183, 221, 14, 0.692);
+  text-align: justify;
+  padding: 0 5px;
+}
+h2 {
+  font-size: 1rem;
+  color: rgba(183, 221, 14, 0.692);
+}
+.image_Detail {
+  width: 100%;
+  height: auto;
 }

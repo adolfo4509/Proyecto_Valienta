@@ -1,8 +1,9 @@
 import axios from "axios";
 
-import { CHARACTERS_URL } from "../Constantes/Constans";
+import { CHARACTERS_URL, CHARACTERSID_URL } from "../Constantes/Constans";
 
-export const GET_CHARACTERS = "GET_VIDEOGAME";
+export const GET_CHARACTERS = "GET_CHARACTERS";
+export const GET_CHARACTERS_DETAILS = "GET_CHARACTERS";
 
 export const getCharacters = () => {
   return async (dispatch) => {
@@ -18,13 +19,13 @@ export const getCharacters = () => {
     }
   };
 };
-export const getEpisodes = () => {
+export const getCharactersDetails = (id) => {
   return async (dispatch) => {
     try {
-      var json = await axios.get(CHARACTERS_URL);
+      var json = await axios.get(CHARACTERSID_URL + id);
 
       return dispatch({
-        type: GET_CHARACTERS,
+        type: GET_CHARACTERS_DETAILS,
         payload: json.data,
       });
     } catch (error) {
