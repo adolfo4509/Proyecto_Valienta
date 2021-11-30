@@ -1,6 +1,4 @@
 const axios = require("axios");
-const { Videogame, Genres, Platforms, Image } = require("../db");
-const { API_KEY } = process.env;
 
 const apiInfo = async () => {
   const getEpisodes = [];
@@ -11,6 +9,7 @@ const apiInfo = async () => {
     );
   }
   const responses = await Promise.all(getEpisodes);
+
   let results = [];
 
   for (let index = 0; index < responses.length; index++) {
@@ -39,23 +38,34 @@ const getAllInfo = async () => {
 
   return temp;
 };
-const episodes = async () => {
-  const getEpisodes = [];
+// const episodes = async () => {
+//   const getEpisodes = [];
 
-  for (let index = 0; index < 10; index++) {
-    getEpisodes.push(
-      axios.get(` https://rickandmortyapi.com/api/character?page=${index + 1}`)
-    );
-  }
-  const responses = await Promise.all(getEpisodes);
-  let results = [];
+//   for (let index = 0; index < 10; index++) {
+//     getEpisodes.push(
+//       axios.get(` https://rickandmortyapi.com/api/episode=${index + 1}`)
+//     );
+//   }
+//   const responses = await Promise.all(getEpisodes);
+//   console.log("episodios", responses);
+//   let results = [];
 
-  for (let index = 0; index < responses.length; index++) {
-    const element = responses[index];
-    results = [...results, ...element.data.results];
-  }
+//   for (let index = 0; index < responses.length; index++) {
+//     const element = responses[index];
+//     results = [...results, ...element.data];
+//   }
 
-  return results;
-};
+//   return results;
+// };
+// const getAllInfoEpisodes = async () => {
+//   const infoTotal = await episodes();
+//   let temp = infoTotal.map((e) => {
+//     return {
+//       episode: e.episode,
+//     };
+//   });
+
+//   return temp;
+// };
 
 module.exports = { apiInfo, getAllInfo };

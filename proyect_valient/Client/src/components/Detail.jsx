@@ -1,51 +1,64 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharactersDetails } from "../Redux/actions";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+import {
+  getCharactersDetails,
+  getCleanCharactersDetails,
+} from "../Redux/actions";
 import "../styles/card.css";
 
 const Detail = (props) => {
+  const charactersDetail = useSelector((state) => state.charactersLoad);
+  console.log("Desde el details", charactersDetail);
   const dispatch = useDispatch();
-  const characters = useSelector((e) => e.characterDetail);
-  console.log("desde el detalle", characters);
+  const history = useHistory();
   useEffect(() => {
     dispatch(getCharactersDetails(props.match.params.id));
+    return () => {
+      dispatch(getCleanCharactersDetails());
+    };
   }, [dispatch, props.match.params.id]);
+
+  const handleClik = (e) => {
+    history.push("/home");
+  };
   return (
     <div className="cards_details">
-      {characters.length > 0 ? (
+      {charactersDetail.length > 0 ? (
         <div className="cards_details_">
           <h2>
             {" "}
-            <span>Name:</span> {characters[0].name}
+            <span>Name:</span> {charactersDetail[0].name}
           </h2>
-          <p className="description">
-            <span>status:</span> {characters[0].status}
-          </p>
-          <p className="description">
-            <span>species: </span>
-            {characters[0].species}
-          </p>
-          <p className="description">
-            <span>type:</span> {characters[0].type}
-          </p>
-          <p className="description">
-            <span>genre: </span>
-            {characters[0].genre}
-          </p>
-          <p className="description1">
-            <span>location:</span> {characters[0].location}
-          </p>
-          <Link to="/">
-            <img
-              className="image_Detail"
-              src={characters[0].image}
-              alt=" img not found"
-            />
-          </Link>
+          <div className="lista">
+            <li className="description">
+              <span>status:</span> {charactersDetail[0].status}
+            </li>
+            <li className="description">
+              <span>species: </span>
+              {charactersDetail[0].species}
+            </li>
+            <li className="description">
+              <span>type:</span> {charactersDetail[0].type}
+            </li>
+
+            <li className="description1">
+              <span>location:</span> {charactersDetail[0].location}
+            </li>
+            <li className="description1">
+              <span>Gender:</span> {charactersDetail[0].gender}
+            </li>
+            <span className="regresar">Para regresar click en la imagen</span>
+          </div>
+          <img
+            className="image_detail"
+            onClick={handleClik}
+            src={charactersDetail[0].image}
+            alt="img not found"
+          />
         </div>
       ) : (
-        <p>landing...</p>
+        <h3>landing...</h3>
       )}
     </div>
   );

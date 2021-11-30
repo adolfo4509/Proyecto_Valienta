@@ -3,14 +3,15 @@
   border-radius: 10px;
   padding: 10px;
   opacity: 0.9;
+  border: 1px solid #fff;
 }
 .fondoCard:hover {
-  /* transform: scale(1.1, 1.1); */
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
   object-fit: cover;
   transition: 0.7s;
   border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 li {
   list-style: none;
@@ -19,11 +20,21 @@ li {
   font-weight: bold;
 }
 .cards_details {
-  top: 0.3rem;
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 3rem;
+  border-radius: 10px;
+  padding-bottom: 1rem;
+  -webkit-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.cards_details:hover {
+  -webkit-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 @media (min-width: 768px) {
   .cards_details {
@@ -31,16 +42,24 @@ li {
   }
 }
 .cards_details_ {
-  border: 1px solid black;
+  padding: 10px;
+  border: 1px solid rgb(247, 239, 239);
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.cards_details_:hover {
   -webkit-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
   box-shadow: 0px 11px 15px -9px rgba(0, 0, 0, 0.63);
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
 p {
   font-size: 1rem;
   color: rgba(183, 221, 14, 0.692);
 }
 span {
+  font-family: "Monsetrrat";
   color: rgba(183, 221, 14, 0.692);
   font-weight: 700;
   text-transform: uppercase;
@@ -58,4 +77,21 @@ h2 {
 .image_Detail {
   width: 100%;
   height: auto;
+}
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+.lista {
+  list-style: none;
+  color: rgba(183, 221, 14, 0.692);
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.regresar {
+  color: rgb(238, 255, 0);
+  font-size: 20px;
+  text-transform: lowercase;
 }

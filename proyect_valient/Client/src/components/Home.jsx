@@ -90,11 +90,14 @@ const Home = () => {
                 species={ch.species}
                 status={ch.status}
                 type={ch.type}
+                Gender={ch.gender}
+                Episode={ch.episode}
                 key={ch.id}
               />
             ))
             .slice(currentPage, currentPage + countP)}
       </div>
+      {show()}
     </div>
   );
 };

@@ -1,10 +1,8 @@
 body {
-  margin: 0 auto;
   box-sizing: border-box;
   background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 @media (min-width: 768px) {
   body {

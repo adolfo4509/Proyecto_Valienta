@@ -6,7 +6,11 @@ module.exports = (sequelize) => {
   return sequelize.define(
     "episodes",
     {
-      episode: { type: DataTypes.STRING, allowNull: false },
+      name: { type: DataTypes.STRING, allowNull: false },
+      air_data: { type: DataTypes.DATE, allowNull: false },
+      episode: { type: DataTypes.INTEGER, allowNull: false },
+      characters: { type: DataTypes.STRING, allowNull: false },
+      url: { type: DataTypes.STRING, allowNull: false },
     },
     {
       timestamps: false,
