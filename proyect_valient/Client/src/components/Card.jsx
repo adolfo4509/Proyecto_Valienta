@@ -11,6 +11,7 @@ const Card = ({
   type,
   id,
   episode,
+  gender,
 }) => {
   return (
     <div className="fondoCard">
@@ -20,6 +21,7 @@ const Card = ({
         <li>location: {location}</li>
         <li>status: {status}</li>
         <li>type: {type}</li>
+        <li>gender: {gender}</li>
         <li>Episode: {episode}</li>
       </div>
       <Link to={`/home/${id}`} className="link_cards">

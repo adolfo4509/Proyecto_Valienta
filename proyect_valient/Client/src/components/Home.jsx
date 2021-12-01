@@ -4,16 +4,20 @@ import Card from "./Card";
 import { getCharacters } from "../Redux/actions";
 import "../styles/paginado.css";
 import "../styles/home.css";
+import "../styles/filtros.scss";
 
 const Home = () => {
   var characterAll = useSelector((state) => state.charactersLoad);
   const dispatch = useDispatch();
 
   /**Paginado */
-  var countP = 8;
+  var countP = 10;
   var totalCurrent = Math.ceil(characterAll.length / countP);
   const [currentPage, setCurrentPage] = useState(0);
   const [actualCurrent, setactualCurrent] = useState(1);
+  const [inputName, setInputName] = useState("");
+  const [inputRadio, setInputRadio] = useState("");
+  const [inputRadioStatus, setInputRadioStatus] = useState("");
 
   const nextPage = () => {
     if (totalCurrent !== actualCurrent) {
@@ -48,7 +52,7 @@ const Home = () => {
             prev
           </p>
           <p className="pagination-item active">{actualCurrent}</p>
-          <p>TO</p>
+          <p className="to">TO</p>
           <p className="pagination-item ">{totalCurrent}</p>
         </div>
       );
@@ -72,15 +76,116 @@ const Home = () => {
   useEffect(() => {
     dispatch(getCharacters()); //se hace un dispatch con la accion como parametro
   }, [dispatch]);
+
+  //Filtrar por nombre de personaje
+  const filterData = () => {
+    if (inputName !== "") {
+      return characterAll.filter((e) =>
+        e.name.toLowerCase().includes(inputName.toLowerCase())
+      );
+    }
+    return characterAll;
+  };
+  const handleInput = (e) => {
+    setInputName(e.target.value);
+  };
+  const handleRadiInput = (e) => {
+    setInputRadioStatus("");
+    setInputRadio(e.target.name);
+  };
+
+  const handleRadiInputStatus = (e) => {
+    setInputRadio("");
+    setInputRadioStatus(e.target.name);
+  };
+  const dataFilterEstadoGenero = () => {
+    if (inputRadio !== "") {
+      return filterData().filter((e) => e.gender.includes(inputRadio));
+    }
+
+    if (inputRadioStatus !== "") {
+      return filterData().filter((e) => e.status.includes(inputRadioStatus));
+    }
+    return filterData();
+  };
+
   return (
     <div className="home">
       <div className="titulo">
         <h1>Rick and Morty</h1>
       </div>
       {show()}
+      <div className="filtrar">
+        <input name="name" type="text" onChange={handleInput} />
+        <div className="select" tabIndex="1">
+          Filtrar por Genero {inputRadio}
+          <div className="list">
+            <label>
+              <input
+                type="radio"
+                id="select-radio1"
+                name="Male"
+                onChange={handleRadiInput}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="select-radio2"
+                name="Female"
+                onChange={handleRadiInput}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="select-radio3"
+                name="unknown"
+                onChange={handleRadiInput}
+              />
+              unknown
+            </label>
+          </div>
+        </div>
+        <div className="select" tabIndex="2">
+          Filtrar por Estado {inputRadioStatus}
+          <div className="list">
+            <label>
+              <input
+                type="radio"
+                id="select-radio4"
+                name="Alive"
+                onChange={handleRadiInputStatus}
+              />
+              Alive
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="select-radio5"
+                name="Dead"
+                onChange={handleRadiInputStatus}
+              />
+              Dead
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="select-radio6"
+                name="unknown"
+                onChange={handleRadiInputStatus}
+              />
+              unknown
+            </label>
+          </div>
+        </div>
+      </div>
+
       <div className="cards">
-        {characterAll &&
-          characterAll
+        {dataFilterEstadoGenero() &&
+          dataFilterEstadoGenero()
             .map((ch) => (
               <Card
                 id={ch.id}
@@ -90,7 +195,7 @@ const Home = () => {
                 species={ch.species}
                 status={ch.status}
                 type={ch.type}
-                Gender={ch.gender}
+                gender={ch.gender}
                 Episode={ch.episode}
                 key={ch.id}
               />

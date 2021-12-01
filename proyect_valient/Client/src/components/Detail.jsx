@@ -1,22 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import {
-  getCharactersDetails,
-  getCleanCharactersDetails,
-} from "../Redux/actions";
+import { getCharactersDetails } from "../Redux/actions";
 import "../styles/card.css";
 
 const Detail = (props) => {
-  const charactersDetail = useSelector((state) => state.charactersLoad);
-  console.log("Desde el details", charactersDetail);
+  const detailCaracter = useSelector((state) => state.characterDetail);
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
     dispatch(getCharactersDetails(props.match.params.id));
-    return () => {
-      dispatch(getCleanCharactersDetails());
-    };
   }, [dispatch, props.match.params.id]);
 
   const handleClik = (e) => {
@@ -24,36 +17,36 @@ const Detail = (props) => {
   };
   return (
     <div className="cards_details">
-      {charactersDetail.length > 0 ? (
+      {detailCaracter.length > 0 ? (
         <div className="cards_details_">
           <h2>
             {" "}
-            <span>Name:</span> {charactersDetail[0].name}
+            <span>Name:</span> {detailCaracter[0].name}
           </h2>
           <div className="lista">
             <li className="description">
-              <span>status:</span> {charactersDetail[0].status}
+              <span>status:</span> {detailCaracter[0].status}
             </li>
             <li className="description">
               <span>species: </span>
-              {charactersDetail[0].species}
+              {detailCaracter[0].species}
             </li>
             <li className="description">
-              <span>type:</span> {charactersDetail[0].type}
+              <span>type:</span> {detailCaracter[0].type}
             </li>
 
             <li className="description1">
-              <span>location:</span> {charactersDetail[0].location}
+              <span>location:</span> {detailCaracter[0].location}
             </li>
             <li className="description1">
-              <span>Gender:</span> {charactersDetail[0].gender}
+              <span>Gender:</span> {detailCaracter[0].gender}
             </li>
             <span className="regresar">Para regresar click en la imagen</span>
           </div>
           <img
             className="image_detail"
             onClick={handleClik}
-            src={charactersDetail[0].image}
+            src={detailCaracter[0].image}
             alt="img not found"
           />
         </div>

@@ -1,0 +1,167 @@
+$dark: #212121;
+$dark-contrast: #424242;
+$light: #fafafa;
+$light-contrast: #cfd8dc;
+$accent: #2196f3;
+
+:root {
+  --dark: #{$dark};
+  --dark-contrast: #{$dark-contrast};
+  --light: #{$light};
+  --light-contrast: #{$light-contrast};
+  --accent: #{$accent};
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+body {
+  box-sizing: border-box;
+  background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-width: 768px) {
+  body {
+    background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.select {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  background-color: var(--dark-contrast);
+  color: #fff;
+  box-shadow: 0 2px 4px -1px rgba(#000, .25);
+  cursor: pointer;
+  user-select: none;
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
+  
+  input[type="radio"] {
+    z-index: -1;
+  }
+  
+  &:focus {
+    outline: 0;
+
+    .list {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: all;
+    }
+  }
+   
+  &:hover {
+    background-color: lighten($dark-contrast, 2.5%);
+  }
+  
+  &:focus {
+    background-color: lighten($dark-contrast, 5%);
+    transition: 400ms ease;
+  }
+  
+  &::after {
+    content: '';
+    display: inline-block;
+    margin-left: auto;
+    border-left: .3755rem solid transparent;
+    border-right: .3755rem solid transparent;
+    border-top: .375rem solid #fff;
+  }
+  
+  .list {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 256px;
+    width: clamp(300px, 75vw, 320px);
+    border-radius: 4px;
+    background-color: var(--light);
+    color: #000;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 400ms ease;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    overflow-y: auto;
+    
+    .group {
+      padding: .75rem 0;
+      
+      &:not(:last-child) {
+        border-bottom: 1px solid darken($light, 10%);
+      }
+    }
+     
+    label {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: darken($light, 5%);
+      }
+      
+      &:active {
+        background-color: darken($light, 10%);
+        transition: 400ms ease;
+      }
+      
+      input[type=radio] {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+input[type=radio] {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  margin: 0;
+  border-radius: 50%;
+  border: solid 1px var(--light-contrast);
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+  
+  &:checked {
+    border: none;
+    background-color: var(--accent);
+    
+    &::before {
+      display: block;
+    }
+  }
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: var(--light);
+    transform: translate(-50%, -50%);
+  }
+}

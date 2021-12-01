@@ -22,7 +22,7 @@ function rootReducer(state = inicialState, action) {
     case GET_CLEAN_CHARACTERS_DETAILS:
       return {
         ...state,
-        charactersDetail: {},
+        charactersDetail: action.payload,
       };
 
     case GET_CHARACTERS_DETAILS:
