@@ -55,7 +55,7 @@
 .pagination .pagination-item:after {
   content: "click";
   color: #fff;
-  background-image: linear-gradient(135deg, #093170, #01579b);
+  background-image: linear-gradient(135deg, #702f09, #7dbbeb);
   transition-delay: 0.25s;
   transform: translateY(100px);
 }

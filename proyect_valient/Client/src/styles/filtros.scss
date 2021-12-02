@@ -1,12 +1,12 @@
 $dark: #212121;
-$dark-contrast: #424242;
+$dark-contrast: #0e0c0c70;
 $light: #fafafa;
 $light-contrast: #cfd8dc;
 $accent: #2196f3;
 
 :root {
   --dark: #{$dark};
-  --dark-contrast: #{$dark-contrast};
+  --dark-contrast: #{$dark-contrast / 20};
   --light: #{$light};
   --light-contrast: #{$light-contrast};
   --accent: #{$accent};
@@ -20,7 +20,7 @@ $accent: #2196f3;
 
 html {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: .6rem;
   line-height: 1.5;
 }
 
@@ -29,36 +29,46 @@ body {
   background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  
+}
+@media (min-width: 468px) {
+  html {
+    font-size: 1rem;
+  }
 }
 @media (min-width: 768px) {
   body {
     background-image: url("https://wallpapercave.com/wp/wp7310601.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+  }
+  html {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 .select {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 300px;
-  background-color: var(--dark-contrast);
+    background-color: var(--dark-contrast);
   color: #fff;
-  box-shadow: 0 2px 4px -1px rgba(#000, .25);
+  box-shadow: 0 2px 4px -1px rgba(#000, .15);
   cursor: pointer;
   user-select: none;
-  padding: 1.25rem 1.5rem;
-  border-radius: 4px;
+  padding: .5rem 1rem;
+  border-radius: 3px;
   
   input[type="radio"] {
-    z-index: -1;
+    z-index: 1;
   }
   
   &:focus {
     outline: 0;
 
     .list {
-      opacity: 1;
+      opacity: .7;
       transform: translate(-50%, -50%) scale(1);
       pointer-events: all;
     }
@@ -84,24 +94,23 @@ body {
   
   .list {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    right: 12%;
     max-height: 256px;
-    width: clamp(300px, 75vw, 320px);
+     width: clamp(100px, 75vw, 220px);
     border-radius: 4px;
     background-color: var(--light);
-    color: #000;
-    transform: translate(-50%, -50%) scale(0);
+    color: rgb(214, 19, 19);
+    transform: translate(-40%, -40%) scale(0);
     transition: all 400ms ease;
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
     overflow-y: auto;
-    
+    z-index: 2;
     .group {
       padding: .75rem 0;
-      
-      &:not(:last-child) {
+           &:not(:last-child) {
         border-bottom: 1px solid darken($light, 10%);
       }
     }
@@ -109,7 +118,7 @@ body {
     label {
       display: flex;
       align-items: center;
-      padding: 1.25rem 1.5rem;
+      padding: .2rem .5rem;
       cursor: pointer;
       
       &:hover {
@@ -126,12 +135,13 @@ body {
       }
     }
   }
+ 
 }
 
 input[type=radio] {
   position: relative;
-  height: 24px;
-  width: 24px;
+  height: 14px;
+  width: 14px;
   margin: 0;
   border-radius: 50%;
   border: solid 1px var(--light-contrast);
@@ -154,7 +164,7 @@ input[type=radio] {
   
   &::before {
     content: '';
-    position: absolute;
+     position: absolute;
     top: 50%;
     left: 50%;
     display: none;
@@ -164,4 +174,9 @@ input[type=radio] {
     background-color: var(--light);
     transform: translate(-50%, -50%);
   }
+}
+.search_{
+  display: flex;
+  // border-radius: 25px 0 0 25px;
+  border: none;
 }

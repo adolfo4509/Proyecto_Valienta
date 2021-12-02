@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import { getCharacters } from "../Redux/actions";
+import "../imagenes/lupa.svg";
 import "../styles/paginado.css";
 import "../styles/home.css";
 import "../styles/filtros.scss";
+import imagen from "../imagenes/Lupa.svg";
 
 const Home = () => {
   var characterAll = useSelector((state) => state.charactersLoad);
   const dispatch = useDispatch();
 
+  //var imagen = require("../imagenes/Lupa.png");
   /**Paginado */
   var countP = 10;
   var totalCurrent = Math.ceil(characterAll.length / countP);
@@ -114,16 +117,24 @@ const Home = () => {
       <div className="titulo">
         <h1>Rick and Morty</h1>
       </div>
-      {show()}
       <div className="filtrar">
-        <input name="name" type="text" onChange={handleInput} />
+        <div className="select">
+          <img className="lupa" src={imagen} alt="imagen not fount" />
+          <input
+            placeholder="Buscar"
+            name="name"
+            type="search"
+            onChange={handleInput}
+          />
+        </div>
         <div className="select" tabIndex="1">
           Filtrar por Genero {inputRadio}
           <div className="list">
             <label>
               <input
+                className="search"
                 type="radio"
-                id="select-radio1"
+                // id="select-radio1"
                 name="Male"
                 onChange={handleRadiInput}
               />
@@ -183,6 +194,7 @@ const Home = () => {
         </div>
       </div>
 
+      {show()}
       <div className="cards">
         {dataFilterEstadoGenero() &&
           dataFilterEstadoGenero()

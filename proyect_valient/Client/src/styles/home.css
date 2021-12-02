@@ -1,5 +1,5 @@
 .to {
-  color: rgb(12, 250, 111);
+  color: rgb(228, 236, 231);
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -43,6 +43,7 @@ img:hover {
     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
   opacity: 0.8;
   border-radius: 8px;
+  margin-bottom: 1rem;
 }
 .titulo:hover {
   transform: scale(1.1, 1.1);
@@ -92,5 +93,13 @@ img:hover {
 
 .filtrar {
   display: flex;
-  padding-bottom: 20rem;
+  gap: 10px;
+}
+
+.lupa {
+  width: 23px;
+}
+
+.search {
+  background-color: rgba(0, 0, 0, 0.55);
 }
