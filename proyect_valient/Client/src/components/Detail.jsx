@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { getCharactersDetails } from "../Redux/actions";
@@ -6,7 +6,7 @@ import "../styles/card.css";
 
 const Detail = (props) => {
   const detailCaracter = useSelector((state) => state.characterDetail);
-  const [character, setCharacter] = useState("");
+
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
@@ -14,8 +14,7 @@ const Detail = (props) => {
   }, [dispatch, props.match.params.id]);
 
   const handleClik = (e) => {
-    setCharacter("");
-    history.push("/home");
+    history.push("/");
   };
   return (
     <div className="cards_details">

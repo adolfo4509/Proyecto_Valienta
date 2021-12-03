@@ -5,7 +5,7 @@ import Home from "./components/Home";
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/home" exact component={Home} />
+      <Route path="/" exact component={Home} />
       <Route path="/home/:id" exact component={Detail} />
     </BrowserRouter>
   );

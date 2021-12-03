@@ -18,6 +18,7 @@ function rootReducer(state = inicialState, action) {
       return {
         ...state,
         charactersLoad: action.payload,
+        copiaCharactersLoad: action.payload,
       };
     case GET_CLEAN_CHARACTERS_DETAILS:
       return {
