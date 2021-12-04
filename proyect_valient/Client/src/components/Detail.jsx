@@ -35,9 +35,11 @@ const Detail = (props) => {
             <li className="description">
               <span>type:</span> {detailCaracter[0].type}
             </li>
-
             <li className="description1">
               <span>location:</span> {detailCaracter[0].location}
+            </li>
+            <li className="description1">
+              <span> Episodes: {detailCaracter[0].episode} </span>
             </li>
             <li className="description1">
               <span>Gender:</span> {detailCaracter[0].gender}
@@ -52,7 +54,7 @@ const Detail = (props) => {
           />
         </div>
       ) : (
-        <h3>landing...</h3>
+        <p>landing...</p>
       )}
     </div>
   );

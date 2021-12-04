@@ -7,12 +7,13 @@ import "../styles/paginado.css";
 import "../styles/home.css";
 import "../styles/filtros.scss";
 import imagen from "../imagenes/Lupa.svg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   var characterAll = useSelector((state) => state.charactersLoad);
+  // console.log("characterAll", characterAll);
   const dispatch = useDispatch();
 
-  //var imagen = require("../imagenes/Lupa.png");
   /**Paginado */
   var countP = 10;
   var totalCurrent = Math.ceil(characterAll.length / countP);
@@ -193,7 +194,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      <div>
+        <Link to="/episode">
+          <button>Episodios</button>
+        </Link>
+        <Link to="/location">
+          <button>Localización</button>
+        </Link>
+      </div>
       {show()}
       <div className="cards">
         {dataFilterEstadoGenero() &&
@@ -208,7 +216,7 @@ const Home = () => {
                 status={ch.status}
                 type={ch.type}
                 gender={ch.gender}
-                Episode={ch.episode}
+                episode={ch.episodes}
                 key={ch.id}
               />
             ))

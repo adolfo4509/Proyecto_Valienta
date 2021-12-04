@@ -3,6 +3,9 @@ const {
   GET_CHARACTERS_DETAILS,
   GET_CLEAN_CHARACTERS_DETAILS,
   GET_EPISODES,
+  GET_EPISODE,
+  GET_LOCATIONS,
+  GET_LOCATION,
 } = require("./actions");
 
 const inicialState = {
@@ -10,6 +13,9 @@ const inicialState = {
   copiaCharactersLoad: [],
   characterDetail: [],
   episodes: [],
+  locations: [],
+  episode: {},
+  location: {},
 };
 
 function rootReducer(state = inicialState, action) {
@@ -18,12 +24,11 @@ function rootReducer(state = inicialState, action) {
       return {
         ...state,
         charactersLoad: action.payload,
-        copiaCharactersLoad: action.payload,
       };
     case GET_CLEAN_CHARACTERS_DETAILS:
       return {
         ...state,
-        charactersDetail: action.payload,
+        copiaCharactersLoad: action.payload,
       };
 
     case GET_CHARACTERS_DETAILS:
@@ -33,6 +38,19 @@ function rootReducer(state = inicialState, action) {
       };
     case GET_EPISODES:
       return { ...state, episodes: action.payload };
+
+    case GET_EPISODE:
+      return {
+        ...state,
+        episode: action.payload,
+      };
+    case GET_LOCATIONS:
+      return { ...state, locations: action.payload };
+    case GET_LOCATION:
+      return {
+        ...state,
+        location: action.payload,
+      };
     default:
       return state;
   }

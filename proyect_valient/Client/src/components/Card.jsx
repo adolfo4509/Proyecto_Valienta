@@ -2,17 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/card.css";
 
-const Card = ({
-  name,
-  image,
-  location,
-  species,
-  status,
-  type,
-  id,
-  episode,
-  gender,
-}) => {
+const Card = ({ name, image, location, species, status, type, id, gender }) => {
   return (
     <div className="fondoCard">
       <div className="lista">
@@ -22,7 +12,9 @@ const Card = ({
         <li>status: {status}</li>
         <li>type: {type}</li>
         <li>gender: {gender}</li>
-        <li>Episode: {episode}</li>
+        {/* <Link to={`/episode/${id}`}>
+          <li>Episode: {episode}</li>
+        </Link> */}
       </div>
       <Link to={`/home/${id}`} className="link_cards">
         <img src={image} alt="imag no fount" />

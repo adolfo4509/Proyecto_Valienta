@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { getEpisodes } from "../Redux/actions";
+import { getLocations } from "../Redux/actions";
 import "../styles/card.css";
-const Episodes = () => {
-  const allEpisodes = useSelector((state) => state.episodes);
+
+const Location = () => {
+  const allLocations = useSelector((state) => state.locations);
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEpisodes());
+    dispatch(getLocations());
   }, [dispatch]);
   const handleClik = (e) => {
     history.push("/");
@@ -19,12 +20,12 @@ const Episodes = () => {
   return (
     <div className="episodios">
       <button onClick={handleClik}>Regresar</button>
-      <h3>Hacer click en el episodio</h3>
+      <h3 className="h3_localizacion">Hacer click en la Localización</h3>
       <div className="Episodios">
-        {allEpisodes.map((episode) => (
-          <Link className="Link_episodes" to={`/episode/${episode.id}`}>
+        {allLocations.map((location) => (
+          <Link className="Link_episodes" to={`/location/${location.id}`}>
             <li className="li_episodes">
-              {`episodio ${episode.id} -  ${episode.name}`}
+              {`Location ${location.id} -  ${location.name}`}
             </li>
           </Link>
         ))}
@@ -33,4 +34,4 @@ const Episodes = () => {
   );
 };
 
-export default Episodes;
+export default Location;

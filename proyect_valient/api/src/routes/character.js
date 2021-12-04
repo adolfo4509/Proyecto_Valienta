@@ -48,6 +48,7 @@ router.get("/character/:id", async (req, res, next) => {
         type: e.type,
         gender: e.gender,
         location: e.location.name,
+        episode: e.episode.join().slice(-2),
       };
     });
     res.status(200).json(infoId);

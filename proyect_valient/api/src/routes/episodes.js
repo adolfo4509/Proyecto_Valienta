@@ -7,6 +7,7 @@ const episodesInfo = async () => {
   }
   const responses = await Promise.all(temp);
   let allEpisodes = responses.map((res) => res.data);
+
   return allEpisodes;
 };
 
