@@ -23,12 +23,14 @@ const CardsEpisode = (props) => {
   });
 
   let filtrado = [];
-  for (let i = 0; i < allCaracters.length; i++) {
-    for (let j = 0; j < idCaracters.length; j++) {
-      if (parseInt(idCaracters[i]) === allCaracters[i]?.id) {
-        filtrado.push(allCaracters[j]);
-      } else {
-        i++;
+  if (idCaracters !== undefined) {
+    for (let i = 0; i < allCaracters.length; i++) {
+      for (let j = 0; j < idCaracters.length; j++) {
+        if (parseInt(idCaracters[i]) === allCaracters[i]?.id) {
+          filtrado.push(allCaracters[j]);
+        } else {
+          i++;
+        }
       }
     }
   }

@@ -3,7 +3,7 @@ const axios = require("axios");
 const apiInfo = async () => {
   const getEpisodes = [];
 
-  for (let index = 0; index < 30; index++) {
+  for (let index = 0; index < 40; index++) {
     getEpisodes.push(
       axios.get(` https://rickandmortyapi.com/api/character?page=${index + 1}`)
     );

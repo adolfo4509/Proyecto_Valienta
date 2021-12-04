@@ -97,8 +97,6 @@ export const getLocation = (id) => {
       var json = await axios.get(
         `https://rickandmortyapi.com/api/location/${id}`
       );
-      console.log("desde la accion de location", json.data);
-
       return dispatch({
         type: GET_LOCATION,
         payload: json.data,

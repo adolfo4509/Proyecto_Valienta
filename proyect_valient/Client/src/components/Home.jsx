@@ -194,12 +194,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div>
-        <Link to="/episode">
-          <button>Episodios</button>
+      <div className="episodes_location">
+        <Link className="episodes_location_click" to="/episode">
+          <button className="episodes_location_button">Episodios</button>
         </Link>
-        <Link to="/location">
-          <button>Localización</button>
+        <Link className="episodes_location_click" to="/location">
+          <button className="episodes_location_button">Localización</button>
         </Link>
       </div>
       {show()}

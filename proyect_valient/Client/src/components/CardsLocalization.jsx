@@ -6,13 +6,12 @@ import "../styles/card.css";
 
 const CardsEpisode = (props) => {
   const allCaracters = useSelector((state) => state.charactersLoad);
-
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);
-
   let arrayLocation = location?.residents;
   const history = useHistory();
   const id = props.match.params.id;
+
   useEffect(() => {
     dispatch(getCharacters());
     dispatch(getLocation(id));
@@ -26,16 +25,15 @@ const CardsEpisode = (props) => {
   });
 
   let filtrado = [];
-  for (let i = 0; i < allCaracters.length; i++) {
-    for (let j = 0; j < idLocation.length; j++) {
-      if (parseInt(idLocation[j]) === allCaracters[i]?.id) {
-        filtrado.push(allCaracters[j]);
-      } else {
-        i++;
+  if (idLocation !== undefined) {
+    for (let i = 0; i < allCaracters.length; i++) {
+      for (let j = 0; j < idLocation.length; j++) {
+        if (parseInt(idLocation[j]) === allCaracters[i]?.id) {
+          filtrado.push(allCaracters[j]);
+        }
       }
     }
   }
-  console.log("location", filtrado);
   filtrado = filtrado.filter(function (ele, pos) {
     return filtrado.indexOf(ele) === pos;
   });
@@ -113,7 +111,10 @@ const CardsEpisode = (props) => {
     <div className="">
       {show()}
       <div className="centar_episodes">
-        <button className="btn_back" onClick={() => history.push(`/location`)}>
+        <button
+          className="episodes_location_click"
+          onClick={() => history.push(`/location`)}
+        >
           Regresar a la lista de Localización
         </button>
         <div>

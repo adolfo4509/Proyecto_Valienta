@@ -19,7 +19,9 @@ const Location = () => {
   };
   return (
     <div className="episodios">
-      <button onClick={handleClik}>Regresar</button>
+      <button className="episodes_location_click_regresar" onClick={handleClik}>
+        Regresar
+      </button>
       <h3 className="h3_localizacion">Hacer click en la Localización</h3>
       <div className="Episodios">
         {allLocations.map((location) => (
