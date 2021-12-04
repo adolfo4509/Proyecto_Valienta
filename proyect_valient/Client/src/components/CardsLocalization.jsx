@@ -22,6 +22,7 @@ const CardsEpisode = (props) => {
     if (e.length === 46) return e.slice(-4);
     if (e.length === 45) return e.slice(-3);
     if (e.length === 44) return e.slice(-2);
+    return e.slice(-1);
   });
 
   let filtrado = [];
