@@ -151,14 +151,23 @@ img {
   color: rgb(238, 255, 0);
   font-weight: bold;
   text-transform: lowercase;
-  font-size: 25px;
+  font-size: 15px;
+}
+@media (min-widht: 768px) {
+  .card_nombre {
+    font-size: 30px;
+  }
 }
 .h3_localizacion {
   color: rgb(238, 255, 0);
   text-align: center;
-  font-size: 25px;
+  font-size: 15px;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.8);
+}
+@media (min-width: 768px) {
+  .h3_localizacion {
+    font-size: 30px;
+  }
 }
 .episodes_location {
   display: flex;
@@ -166,7 +175,6 @@ img {
   padding-top: 10px;
 }
 .episodes_location_click {
-  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
@@ -176,8 +184,13 @@ img {
   cursor: pointer;
   text-decoration: none;
   color: #fff;
-  font-size: 25px;
+  font-size: 15px;
   border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .episodes_location_click {
+    font-size: 30px;
+  }
 }
 .episodes_location_click_regresar {
   display: flex;
