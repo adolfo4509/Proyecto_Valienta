@@ -22,7 +22,7 @@ const Episodes = () => {
       <div className="Episodios">
         {allEpisodes.map((episode) => (
           <Link className="Link_episodes" to={`/episode/${episode.id}`}>
-            <li className="li_episodes">
+            <li key={episode.id} className="li_episodes">
               {`episodio ${episode.id} -  ${episode.name}`}
             </li>
           </Link>

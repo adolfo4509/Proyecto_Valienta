@@ -34,14 +34,14 @@ const CardsEpisode = (props) => {
       }
     }
   }
-  filtrado = filtrado.filter(function (ele, pos) {
+  filtrado = filtrado.filter((ele, pos) => {
     return filtrado.indexOf(ele) === pos;
   });
 
   let personaje = filtrado.map((e) => {
     return (
-      <div className="card_body1" key={e.id}>
-        <div className="card_body1">
+      <div className="card_body1">
+        <div className="card_body1" key={id}>
           <span className="card_nombre">{e.name}</span>
           <img src={e.image} alt={e.name} onClick={() => history.push(`/`)} />
         </div>
