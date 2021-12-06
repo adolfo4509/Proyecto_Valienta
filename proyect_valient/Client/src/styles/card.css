@@ -21,7 +21,7 @@ li {
 }
 .cards_details {
   position: relative;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   border-radius: 10px;
   padding-bottom: 1rem;
@@ -38,7 +38,7 @@ li {
 }
 @media (min-width: 768px) {
   .cards_details {
-    width: 300px;
+    width: 250px;
   }
 }
 .cards_details_ {
